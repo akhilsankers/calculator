@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: purple;
+        }
+        .box {
+            background-color: black;
+            padding: 10px;
+            margin: 30px;
+            width: 350px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            text-align: right;
+        }
+        input[type="button"] {
+            width: 80px;
+            height: 40px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="box">
+            <h1 style="color: white;">Calculator</h1>
+            <form name="calc">
+                <input type="text" name="display" id="display" readonly>
+                <br><br>
+                <input type="button" value="1" onclick="addToDisplay('1')">
+                <input type="button" value="2" onclick="addToDisplay('2')">
+                <input type="button" value="3" onclick="addToDisplay('3')">
+                <input type="button" value="+" onclick="addToDisplay('+')">
+                <br><br>
+                <input type="button" value="4" onclick="addToDisplay('4')">
+                <input type="button" value="5" onclick="addToDisplay('5')">
+                <input type="button" value="6" onclick="addToDisplay('6')">
+                <input type="button" value="-" onclick="addToDisplay('-')">
+                <br><br>
+                <input type="button" value="7" onclick="addToDisplay('7')">
+                <input type="button" value="8" onclick="addToDisplay('8')">
+                <input type="button" value="9" onclick="addToDisplay('9')">
+                <input type="button" value="*" onclick="addToDisplay('*')">
+                <br><br>
+                <input type="button" value="⌫" onclick="Erase()">
+                <input type="button" value="0" onclick="addToDisplay('0')">
+                <input type="button" value="00" onclick="addToDisplay('00')">
+                <input type="button" value="/" onclick="addToDisplay('/')">
+                <input type="button" value="AC" onclick="clearDisplay()">
+                <input type="button" value="=" onclick="calculateResult()" style="width: 250px; margin-top: 30px ;margin-bottom: 30px;">
+            </form>
+        </div>
+    </center>
+
+    <script>
+        function addToDisplay(value) {
+            document.calc.display.value += value;
+        }
+
+        function clearDisplay() {
+            document.calc.display.value = "";
+        }
+        function Erase(){
+            document.calc.display.value = document.calc.display.value.slice(0, -1);
+        }
+
+        function calculateResult() {
+            try {
+                document.calc.display.value = eval(document.calc.display.value);
+            } catch {
+                document.calc.display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
